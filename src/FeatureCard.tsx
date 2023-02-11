@@ -8,11 +8,11 @@ import {
   CardFooter,
 } from "@chakra-ui/react";
 
-export function FeatureCard() {
+export default function FeatureCard({ maxWidth }: any) {
   const bgColor = useColorModeValue("gray.100", "gray.700");
 
   return (
-    <Card bgColor={bgColor}>
+    <Card bgColor={bgColor} maxW={maxWidth === "" ? "sm" : maxWidth}>
       <CardHeader>Magical Card</CardHeader>
       <CardBody margin={3}>
         <Img
