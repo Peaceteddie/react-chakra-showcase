@@ -1,4 +1,4 @@
-import { Box, Center, useColorModeValue } from "@chakra-ui/react";
+import { Center, useColorModeValue } from "@chakra-ui/react";
 
 export function Footer() {
   const color = useColorModeValue("gray.200", "gray.600");
