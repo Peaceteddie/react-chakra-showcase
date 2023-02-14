@@ -30,9 +30,6 @@ export const TopNavBar = () => (
       <Link className="nav-bar-link" to="/">
         Home
       </Link>
-      <Link className="nav-bar-link" to="work">
-        Work
-      </Link>
       <Link className="nav-bar-link" to="showcase">
         Showcase
       </Link>

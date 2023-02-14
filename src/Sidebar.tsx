@@ -31,7 +31,7 @@ export default function Sidebar() {
         </a>
 
         <a
-          href="https://www.github.com/peaceteddie/"
+          href="https://www.linkedin.com/in/peaceteddie/"
           rel="noreferrer"
           target="_blank"
           title="Link to my LinkedIn"

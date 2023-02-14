@@ -1,15 +1,25 @@
-import { Box, Flex, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Button,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderMark,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import FeatureCard from "./FeatureCard";
 
-const count = 10;
-const width = "500";
-const height = width;
-const theta = 360 / count;
-const radius = Math.round(Number(width) / 2 / Math.tan(Math.PI / count));
-
 export default function Showcase() {
+  const [count, setCount] = useState(4);
+  const [width, setWidth] = useState(400);
+  const [perspective, setPerspective] = useState(1000);
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const height = width;
+  const theta = 360 / count;
+  const radius = Math.round(Number(width) / 2 / Math.tan(Math.PI / count));
 
   function GetRotation(index: number) {
     return theta * index;
@@ -28,14 +38,14 @@ export default function Showcase() {
   }
 
   return (
-    <Box>
+    <Flex direction={"column"}>
       <div
         style={{
           position: "relative",
           width: width + "px",
           height: height + "px",
           margin: "auto",
-          perspective: "1000px",
+          perspective: perspective,
           //clipPath: "inset(0 0 round 50px)",
         }}
       >
@@ -79,14 +89,88 @@ export default function Showcase() {
           ))}
         </div>
       </div>
-      <Flex align="center" justify="center" gap="50px" margin="auto">
+      <Flex justify={"space-around"} gap="100px" marginTop={"150px"} position="absolute" bottom={"5rem"} width="100%">
         <Button blockSize={"60px"} inlineSize={"100px"} onClick={TurnLeft}>
           Left
         </Button>
+        <div style={{ flexGrow: "1" }}>
+          Count
+          <Slider
+            min={4}
+            max={50}
+            step={2}
+            defaultValue={count}
+            onChange={setCount}
+          >
+            <SliderMark
+              value={count}
+              textAlign="center"
+              bg="blue.500"
+              color="white"
+              mt="-10"
+              ml="-5"
+              w="12"
+            >
+              {count}
+            </SliderMark>
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          Width
+          <Slider
+            min={100}
+            max={600}
+            step={10}
+            defaultValue={width}
+            onChange={setWidth}
+          >
+            <SliderMark
+              value={width}
+              textAlign="center"
+              bg="blue.500"
+              color="white"
+              mt="-10"
+              ml="-5"
+              w="12"
+            >
+              {width}
+            </SliderMark>
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+          Perspective
+          <Slider
+            min={0}
+            max={2000}
+            step={100}
+            defaultValue={perspective}
+            onChange={setPerspective}
+          >
+            <SliderMark
+              value={perspective}
+              textAlign="center"
+              bg="blue.500"
+              color="white"
+              mt="-10"
+              ml="-5"
+              w="12"
+            >
+              {perspective}
+            </SliderMark>
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+        </div>
         <Button blockSize={"60px"} inlineSize={"100px"} onClick={TurnRight}>
           Right
         </Button>
       </Flex>
-    </Box>
+    </Flex>
   );
 }
