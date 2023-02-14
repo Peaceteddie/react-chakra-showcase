@@ -12,10 +12,13 @@ export default function Sidebar() {
 
   return (
     <Box left="0" position="fixed" top="12rem" width={size}>
+      
       <Icon viewBox="0 0 50 50" color={bgColor} height={size} width={size}>
         <path d="M 0 0 C 0,50 50,25 50,50 H0Z" fill="currentColor" />
       </Icon>
+
       <Center bgColor={bgColor} flexDirection={"column"}>
+        
         <a
           href="https://www.github.com/peaceteddie/"
           rel="noreferrer"
@@ -26,6 +29,7 @@ export default function Sidebar() {
             <GHIcon />
           </Icon>
         </a>
+
         <a
           href="https://www.github.com/peaceteddie/"
           rel="noreferrer"
@@ -42,10 +46,13 @@ export default function Sidebar() {
             <LinkedInIcon />
           </Icon>
         </a>
+
       </Center>
+
       <Icon viewBox="0 100 50 50" color={bgColor} height={size} width={size}>
-        <path d="M 0 150 C 0,100 50,125 50,100 H0" fill="currentColor" />
+        <path d="M 0 150 C 0,100 50,125 50,100 H0Z" fill="currentColor" />
       </Icon>
+    
     </Box>
   );
 }

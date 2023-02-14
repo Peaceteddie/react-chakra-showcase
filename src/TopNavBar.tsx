@@ -33,6 +33,9 @@ export const TopNavBar = () => (
       <Link className="nav-bar-link" to="work">
         Work
       </Link>
+      <Link className="nav-bar-link" to="showcase">
+        Showcase
+      </Link>
     </Flex>
     <Spacer />
     <ColorModeSwitcher fontSize={"5xl"} size={"lg"} />
