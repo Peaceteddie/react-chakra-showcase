@@ -10,7 +10,7 @@ import {
   Checkbox,
   Center,
 } from "@chakra-ui/react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 import FeatureCard from "./FeatureCard";
 
 export default function Showcase() {
@@ -25,14 +25,17 @@ export default function Showcase() {
   const [infiniteLoop, setInfiniteLoop] = useState(false);
 
   const height = width;
-  const theta = 360 / count;
-  const radius = Math.round(Number(width) / 2 / Math.tan(Math.PI / count));
 
-  var ref = useRef(true);
+  const theta = useMemo(() => 360 / count, [count]);
+  const radius = useMemo(
+    () => Math.round(width / 2 / Math.tan(Math.PI / count)),
+    [count, width]
+  );
 
+  var loop = useRef(true);
   useEffect(() => {
-    if (ref.current !== infiniteLoop) {
-      ref.current = infiniteLoop;
+    if (loop.current !== infiniteLoop) {
+      loop.current = infiniteLoop;
       setSelectedIndex(0);
       setVisualIndex(0);
     }
@@ -163,7 +166,7 @@ export default function Showcase() {
               ml="-5"
               w="12"
             >
-              {infiniteLoop ? 0 : visualIndex}
+              {infiniteLoop ? 0 : visualIndex + 1}
             </SliderMark>
             <SliderTrack>
               <SliderFilledTrack />
